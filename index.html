@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcova — Building brands. Creating experiences.</title>
+<meta name="description" content="Arcova es un estudio creativo multidisciplinario en Santo Domingo que combina estrategia, diseño y tecnología para construir marcas, experiencias y soluciones que generan valor.">
+<meta property="og:title" content="Arcova — We build what moves brands forward.">
+<meta property="og:description" content="Brand · Digital · Experience · Technology. Estudio creativo en Santo Domingo, República Dominicana.">
+<meta property="og:image" content="assets/gradient.jpg">
+<meta name="theme-color" content="#07070b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236d28d9'/><stop offset='1' stop-color='%2322d3ee'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='%2307070b'/><path d='M14 50 L32 12 L50 50' stroke='url(%23g)' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="arc.css">
+</head>
+<body class="is-loading">
+
+<!-- Loader -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__brand"><span>A</span><span>r</span><span>c</span><span>o</span><span>v</span><span>a</span></div>
+  <div class="loader__count"><span class="loader__num">0</span>%</div>
+  <div class="loader__bar"><i></i></div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span class="cursor__label"></span></div></div>
+
+<!-- Grain -->
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="#top" class="nav__logo" data-magnetic>Arcova</a>
+  <nav class="nav__links" aria-label="Principal">
+    <a href="#studio" class="link-roll"><span data-i18n="nav.studio" data-text="Studio">Studio</span></a>
+    <a href="#services" class="link-roll"><span data-i18n="nav.services" data-text="Services">Services</span></a>
+    <a href="#why" class="link-roll"><span data-i18n="nav.why" data-text="Why us">Why us</span></a>
+    <a href="#clients" class="link-roll"><span data-i18n="nav.clients" data-text="Clients">Clients</span></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Idioma / Language"><button data-lang="es">ES</button><span>/</span><button data-lang="en">EN</button></div>
+  <a href="#contact" class="btn btn--pill" data-magnetic><span data-i18n="nav.cta">Hablemos</span><i>→</i></a>
+  <button class="nav__burger" aria-label="Menú" aria-expanded="false"><i></i><i></i></button>
+</header>
+
+<div class="menu" aria-hidden="true">
+  <a href="#studio" data-i18n="nav.studio">Studio</a><a href="#services" data-i18n="nav.services">Services</a><a href="#why" data-i18n="nav.why">Why us</a><a href="#clients" data-i18n="nav.clients">Clients</a><a href="#contact" data-i18n="nav.contact">Contact</a>
+  <div class="lang lang--menu" role="group" aria-label="Idioma / Language"><button data-lang="es">Español</button><span>/</span><button data-lang="en">English</button></div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="aurora" aria-hidden="true">
+      <div class="aurora__blob b1"></div><div class="aurora__blob b2"></div><div class="aurora__blob b3"></div><div class="aurora__blob b4"></div>
+    </div>
+    <img class="hero__glass" src="assets/glass.webp" alt="" aria-hidden="true">
+
+    <div class="hero__top">
+      <p class="mono">Deck ’26 — Studio</p>
+      <p class="mono hero__tags">Brand · Digital · Experience · Technology</p>
+    </div>
+
+    <h1 class="hero__title">
+      <span class="line"><span data-i18n="hero.l1">Building</span></span>
+      <span class="line"><span data-i18n-html="hero.l2">brands<em>.</em></span></span>
+      <span class="line line--indent"><span data-i18n="hero.l3">Creating</span></span>
+      <span class="line"><span class="grad" data-i18n="hero.l4">experiences.</span></span>
+    </h1>
+
+    <div class="hero__bottom">
+      <p class="hero__lead" data-i18n="hero.lead">Estudio creativo multidisciplinario. Estrategia, diseño y tecnología para construir marcas que se ven, se usan y se recuerdan.</p>
+      <div class="hero__meta">
+        <p class="mono" data-i18n-html="loc">Santo Domingo,<br>República Dominicana</p>
+        <a href="#studio" class="scroll-cue" aria-label="Scroll"><span>Scroll</span><i></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee" aria-label="Disciplinas">
+    <div class="marquee__track" data-velocity>
+      <span>Brand</span><b>✦</b><span class="o">Digital</span><b>✦</b><span>Experience</span><b>✦</b><span class="o">Technology</span><b>✦</b><span>AI</span><b>✦</b>
+      <span>Brand</span><b>✦</b><span class="o">Digital</span><b>✦</b><span>Experience</span><b>✦</b><span class="o">Technology</span><b>✦</b><span>AI</span><b>✦</b>
+    </div>
+  </section>
+
+  <!-- ARC: vision → reality (built by arc.js) -->
+  <section class="arc" id="arc" aria-label="Visión a realidad"></section>
+
+  <!-- STUDIO -->
+  <section class="studio" id="studio">
+    <div class="studio__vert" aria-hidden="true">Arcova</div>
+    <div class="studio__grid">
+      <div class="studio__text">
+        <p class="eyebrow">→ Studio</p>
+        <h2 class="reveal-words" data-i18n="studio.title">We build what moves brands forward.</h2>
+        <div class="studio__copy fade-up">
+          <p data-i18n="studio.p1">Arcova es un estudio creativo multidisciplinario que combina estrategia, diseño y tecnología para construir marcas, experiencias y soluciones que generan valor para los negocios.</p>
+          <p data-i18n="studio.p2">Trabajamos desde la definición estratégica y la identidad de marca hasta experiencias digitales, espacios físicos, inteligencia artificial y automatización.</p>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong><span data-count="10">0</span>+</strong><span data-i18n-html="stat.1">Años de<br>experiencia</span></div>
+          <div class="stat"><strong><span data-count="100">0</span>+</strong><span data-i18n-html="stat.2">Clientes e<br>industrias</span></div>
+          <div class="stat"><strong><span data-count="5">0</span></strong><span data-i18n-html="stat.3">Disciplinas<br>integradas</span></div>
+        </div>
+      </div>
+      <figure class="studio__photo" data-cursor="Laura">
+        <div class="studio__photo-inner"><img src="assets/laura.webp" alt="Laura Ortiz, Founder & Creative Director de Arcova"></div>
+        <div class="glass-chip"><span class="dot"></span> <span data-i18n="studio.chip">Senior-led studio</span></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PROCESS (light) -->
+  <section class="process">
+    <div class="process__head">
+      <p class="eyebrow" data-i18n="eb.method">→ Method</p>
+      <h2 class="big-title"><span class="line"><span data-i18n="proc.t1">Creativity is</span></span><span class="line"><span data-i18n="proc.t2">a business tool</span></span></h2>
+      <p class="process__intro fade-up" data-i18n-html="proc.intro"><strong>No diseñamos por diseñar.</strong> Entendemos primero el negocio, la audiencia y el problema. Luego usamos creatividad, tecnología y diseño para convertir esa estrategia en algo que las personas puedan ver, usar, experimentar y recordar.</p>
+    </div>
+    <div class="process__cards">
+      <article class="pcard" data-tilt>
+        <span class="pcard__n">01</span>
+        <h3>Think</h3>
+        <p data-i18n="proc.c1">Entendemos el reto y definimos la oportunidad.</p>
+        <div class="pcard__orb o1"></div>
+      </article>
+      <article class="pcard" data-tilt>
+        <span class="pcard__n">02</span>
+        <h3>Create</h3>
+        <p data-i18n="proc.c2">Desarrollamos conceptos, sistemas y experiencias.</p>
+        <div class="pcard__orb o2"></div>
+      </article>
+      <article class="pcard" data-tilt>
+        <span class="pcard__n">03</span>
+        <h3>Build</h3>
+        <p data-i18n="proc.c3">Convertimos las ideas en soluciones reales.</p>
+        <div class="pcard__orb o3"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services__head">
+      <p class="eyebrow">→ What we do</p>
+      <h2 class="big-title"><span class="line"><span data-i18n="svc.t1">Five disciplines.</span></span><span class="line"><span class="grad" data-i18n="svc.t2">One direction.</span></span></h2>
+    </div>
+    <ul class="svc">
+      <li class="svc__item" data-img="assets/gradient.webp">
+        <button class="svc__row" aria-expanded="false"><span class="svc__n">01</span><span class="svc__name">Brand &amp; Identity</span><span class="svc__plus"></span></button>
+        <div class="svc__body"><div><p data-i18n="svc.1">Estrategia de marca · Naming · Identidad visual · Sistemas de marca · Packaging</p></div></div>
+      </li>
+      <li class="svc__item" data-img="assets/glass.webp">
+        <button class="svc__row" aria-expanded="false"><span class="svc__n">02</span><span class="svc__name">Creative &amp; Strategy</span><span class="svc__plus"></span></button>
+        <div class="svc__body"><div><p data-i18n="svc.2">Dirección creativa · Campañas · Concept development · Estrategia de comunicación · Content · Editorial</p></div></div>
+      </li>
+      <li class="svc__item" data-img="assets/vr.webp">
+        <button class="svc__row" aria-expanded="false"><span class="svc__n">03</span><span class="svc__name">Digital Experiences</span><span class="svc__plus"></span></button>
+        <div class="svc__body"><div><p data-i18n="svc.3">Web · E-commerce · UI/UX · Experiencias interactivas · AR · Productos digitales</p></div></div>
+      </li>
+      <li class="svc__item" data-img="assets/glass.webp">
+        <button class="svc__row" aria-expanded="false"><span class="svc__n">04</span><span class="svc__name">Physical Experiences</span><span class="svc__plus"></span></button>
+        <div class="svc__body"><div><p data-i18n="svc.4">Retail · Spatial branding · Señalética · Activaciones · Instalaciones · Experiencias inmersivas</p></div></div>
+      </li>
+      <li class="svc__item" data-img="assets/vr.webp">
+        <button class="svc__row" aria-expanded="false"><span class="svc__n">05</span><span class="svc__name">AI &amp; Automation</span><span class="svc__plus"></span></button>
+        <div class="svc__body"><div><p data-i18n="svc.5">Inteligencia artificial · Automatización · Business Intelligence · Optimización de procesos · Agentes y chatbots de WhatsApp · Soluciones digitales</p></div></div>
+      </li>
+    </ul>
+    <div class="svc__float" aria-hidden="true"><img alt=""></div>
+  </section>
+
+  <!-- KINETIC CYLINDER -->
+  <section class="kinetic" aria-label="Built to scale">
+    <div class="kinetic__stage" aria-hidden="true">
+      <div class="cyl"></div>
+    </div>
+    <div class="kinetic__text">
+      <p class="eyebrow">→ Built to scale</p>
+      <h2 class="reveal-words" data-i18n="kin.title">Un core team senior. Una red de especialistas que crece con cada reto.</h2>
+      <p class="fade-up" data-i18n="kin.p">Mantenemos una dirección creativa y estratégica consistente mientras integramos las capacidades técnicas y de producción que cada proyecto necesita.</p>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="why__head">
+      <p class="eyebrow">→ Why Arcova?</p>
+      <h2 class="big-title"><span class="line"><span data-i18n="why.t1">Why</span></span><span class="line"><span class="grad" data-i18n="why.t2">Arcova?</span></span></h2>
+    </div>
+    <div class="why__grid">
+      <article class="wcard" data-tilt><span class="wcard__i">◐</span><h3>Senior-led</h3><p data-i18n="why.1">Los proyectos son liderados directamente por nuestro equipo fundador y creativo.</p></article>
+      <article class="wcard" data-tilt><span class="wcard__i">◎</span><h3>Strategy first</h3><p data-i18n="why.2">Partimos del problema de negocio, no del deliverable.</p></article>
+      <article class="wcard" data-tilt><span class="wcard__i">✦</span><h3>Multidisciplinary</h3><p data-i18n="why.3">Combinamos creatividad, diseño, tecnología y ejecución.</p></article>
+      <article class="wcard" data-tilt><span class="wcard__i">⌁</span><h3>Built to scale</h3><p data-i18n="why.4">Integramos especialistas y partners según el alcance de cada proyecto.</p></article>
+      <article class="wcard wcard--wide" data-tilt><span class="wcard__i">→</span><h3>End-to-end</h3><p data-i18n="why.5">Desde la idea hasta la implementación, mantenemos una dirección central y consistente.</p></article>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team">
+    <p class="eyebrow">→ Team</p>
+    <div class="team__list">
+      <div class="team__row" data-cursor="Hola" data-i18n-cursor="cursor.hi">
+        <h3>Laura Ortiz</h3><p>Founder &amp; Creative Director</p>
+      </div>
+      <div class="team__row" data-cursor="Hola" data-i18n-cursor="cursor.hi">
+        <h3>Geffri González</h3><p>Head of Digital Experiences</p>
+      </div>
+      <div class="team__row team__row--net">
+        <h3>Extended Network</h3>
+        <ul class="tags">
+          <li>Development</li><li>Engineering</li><li>AI</li><li>Data</li><li>AR</li><li>Production</li><li>Fabrication</li><li>Printing</li><li>Photography</li><li>Video</li><li>Content</li><li>Paid Media</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients" id="clients">
+    <div class="clients__head">
+      <p class="eyebrow">→ Trust us</p>
+      <h2 class="big-title"><span class="line"><span data-i18n="cl.t1">Marcas que</span></span><span class="line"><span class="grad" data-i18n="cl.t2">confían en nosotros.</span></span></h2>
+    </div>
+    <div class="logos">
+      <div class="logos__row" data-dir="1">
+        <img src="assets/logos/right.png" alt="Right Construction"><img src="assets/logos/sayhi.png" alt="Say hi Beauty"><img src="assets/logos/impegna.png" alt="Impegna"><img src="assets/logos/layuca.png" alt="La Yuca Group"><img src="assets/logos/dentolux.png" alt="Dentolux"><img src="assets/logos/passos.png" alt="Passos"><img src="assets/logos/apap.png" alt="Asociación Popular de Ahorros y Préstamos">
+      </div>
+      <div class="logos__row" data-dir="-1">
+        <img src="assets/logos/ourflavour.png" alt="Our Flavour"><img src="assets/logos/gingerly.png" alt="Gingerly"><img src="assets/logos/emcaro.png" alt="Grupo Emcaro"><img src="assets/logos/vainaverde.png" alt="Una Vaina Verde"><img src="assets/logos/jaraba.png" alt="Jaraba"><img src="assets/logos/chezmarie.png" alt="Chez Marie Bakery"><img src="assets/logos/teabrazo.png" alt="TEAbrazo"><img src="assets/logos/impegna.png" alt="Impegna">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="aurora aurora--contact" aria-hidden="true">
+      <div class="aurora__blob b1"></div><div class="aurora__blob b2"></div><div class="aurora__blob b3"></div>
+    </div>
+    <p class="eyebrow" data-i18n="eb.talk">→ Let’s talk</p>
+    <a href="mailto:lortiz@arcovaco.com" class="contact__big" data-cursor="Escríbenos" data-i18n-cursor="cursor.write">
+      <span class="line"><span data-i18n="ct.t1">Let’s build</span></span>
+      <span class="line"><span class="grad"><span data-i18n="ct.t2">something</span><i class="arrow">→</i></span></span>
+    </a>
+    <div class="contact__grid">
+      <div><p class="mono" data-i18n="ct.mail">Correo</p><a href="mailto:lortiz@arcovaco.com" class="link-u">lortiz@arcovaco.com</a></div>
+      <div><p class="mono" data-i18n="ct.phone">Teléfono</p><a href="tel:+18096070638" class="link-u">+1 809-607-0638</a></div>
+      <div><p class="mono">WhatsApp</p><a href="https://wa.me/18096070638" target="_blank" rel="noopener" class="link-u" data-i18n="ct.wa">Escríbenos →</a></div>
+      <div><p class="mono">Social</p><a href="https://instagram.com/arcovaco.rd" target="_blank" rel="noopener" class="link-u">@arcovaco.rd</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__big" aria-hidden="true">Arcova</div>
+  <div class="footer__bar">
+    <p>© <span class="year"></span> Arcova Studio</p>
+    <p data-i18n="loc.flat">Santo Domingo, República Dominicana</p>
+    <p class="clock mono"></p>
+    <a href="#top" class="link-u" data-i18n="ft.top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="i18n.js"></script>
+<script src="main.js"></script>
+<script src="arc.js"></script>
+</body>
+</html>
