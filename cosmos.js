@@ -8,7 +8,6 @@
   const section = document.querySelector('.kinetic');
   if (!section) return;
   const stage = section.querySelector('.kinetic__stage');
-  if (stage) stage.remove();
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canvas = document.createElement('canvas');
@@ -182,6 +181,22 @@
     }
   }
 
+  const motes = [];
+  function drawMotes(dt) {
+    const target = small ? 40 : 90;
+    while (motes.length < target) motes.push({ x: Math.random() * W, y: Math.random() * H, r: 0.6 + Math.random() * 1.8, v: 4 + Math.random() * 12, ph: Math.random() * 6.28, hue: 200 + Math.random() * 80 });
+    ctx.globalCompositeOperation = 'lighter';
+    for (const m of motes) {
+      m.y -= m.v * dt; m.x += Math.sin(T * 0.4 + m.ph) * 6 * dt - px * 0.3;
+      if (m.y < -10) { m.y = H + 10; m.x = Math.random() * W; }
+      const a = 0.25 + 0.35 * Math.abs(Math.sin(T * 0.7 + m.ph));
+      const g = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.r * 5);
+      g.addColorStop(0, `hsla(${m.hue},90%,75%,${a})`); g.addColorStop(1, `hsla(${m.hue},90%,60%,0)`);
+      ctx.fillStyle = g; ctx.fillRect(m.x - m.r * 5, m.y - m.r * 5, m.r * 10, m.r * 10);
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
   function orbitPath(o) {
     const pts = [];
     for (let i = 0; i <= 96; i++) {
@@ -203,6 +218,9 @@
     drawNebula(T);
     drawStars(T);
     drawMeteors(dt);
+    drawMotes(dt);
+    if (running) raf = requestAnimationFrame(frame);
+    return;
 
     // Orbit rings (drawn as arcs, brighter in front)
     const seen = new Set();

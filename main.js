@@ -22,7 +22,9 @@
   // Duplicate logo rows / marquee for seamless loops
   $$('.logos__row').forEach(r => { r.innerHTML += r.innerHTML; });
 
-  // Cosmos (replaces the old kinetic text cylinder)
+  // Kinetic cylinder (spacetype "ARCOVA" study) over the cosmos background
+  buildCylinder();
+  // Cosmos background
   const cl = document.createElement('link'); cl.rel = 'stylesheet'; cl.href = 'cosmos.css'; document.head.appendChild(cl);
   const cs = document.createElement('script'); cs.src = 'cosmos.js'; cs.defer = true; document.body.appendChild(cs);
 
@@ -224,4 +226,44 @@
   });
   $('.svc').addEventListener('mouseleave', () => gsap.to(fl, { opacity: 0, scale: 0.6, duration: 0.4, ease: 'expo.out' }));
 
+  // Cylinder tilts with pointer
+  const cyl = $('.cyl');
+  $('.kinetic').addEventListener('pointermove', e => {
+    const r = e.currentTarget.getBoundingClientRect();
+    gsap.to(cyl, { rotateX: -12 + ((e.clientY - r.top) / r.height - 0.5) * -20, rotateZ: -8 + ((e.clientX - r.left) / r.width - 0.5) * 12, duration: 1.2, ease: 'power3.out' });
+  });
+
+  // ---------- Builders ----------
+  function buildCylinder() {
+    const cylEl = $('.cyl');
+    const stage = $('.kinetic__stage');
+    const H = stage.clientHeight || 600;
+    const rows = 13;
+    const small = innerWidth < 820;
+    const baseR = small ? 92 : 175;
+    const fs = small ? 16 : 28;
+    const word = 'ARCOVA —';
+    for (let i = 0; i < rows; i++) {
+      const t = i / (rows - 1);
+      // waist shape like the reference: wider at the ends, pinched in the middle
+      const R = baseR * (0.78 + 0.42 * Math.pow(Math.abs(t - 0.45) * 2, 1.6));
+      const n = Math.max(6, Math.round((2 * Math.PI * R) / (fs * 5.2)));
+      const ring = document.createElement('div');
+      ring.className = 'cyl__ring';
+      ring.style.top = (0.04 + t * 0.92) * H + 'px';
+      ring.style.setProperty('--dur', (22 + (i % 3) * 3) + 's');
+      ring.style.setProperty('--delay', -i * 0.9 + 's');
+      ring.style.setProperty('--fs', fs * (0.85 + 0.3 * (1 - Math.abs(t - 0.5))) + 'px');
+      if (i % 2) ring.style.animationDirection = 'reverse';
+      const hue = 265 - 75 * t;
+      for (let k = 0; k < n; k++) {
+        const s = document.createElement('span');
+        s.textContent = k % 4 === 3 ? 'ARCOVA ×' : word;
+        s.style.transform = `rotateY(${(360 / n) * k}deg) translateZ(${R}px) translate(-50%,-50%)`;
+        s.style.color = `hsl(${hue} 90% ${72 - Math.abs(t - 0.5) * 20}%)`;
+        ring.appendChild(s);
+      }
+      cylEl.appendChild(ring);
+    }
+  }
 })();

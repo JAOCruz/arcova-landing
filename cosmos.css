@@ -2,10 +2,14 @@
 .kinetic.has-cosmos{display:grid;grid-template-columns:1fr minmax(320px,440px);min-height:110vh;background:#05050a;isolation:isolate}
 .kinetic.has-cosmos .cosmos{position:absolute;inset:0;z-index:0;pointer-events:none}
 .kinetic.has-cosmos .kinetic__text{grid-column:2;position:relative;z-index:1}
+.kinetic.has-cosmos .kinetic__stage{grid-column:1;grid-row:1;position:relative;z-index:1}
+.kinetic.has-cosmos .cyl__ring span{text-shadow:0 0 18px currentColor,0 0 2px rgba(255,255,255,.6)}
 .kinetic.has-cosmos::before,.kinetic.has-cosmos::after{content:"";position:absolute;left:0;right:0;height:18vh;z-index:0;pointer-events:none}
 .kinetic.has-cosmos::before{top:0;background:linear-gradient(var(--bg),transparent)}
 .kinetic.has-cosmos::after{bottom:0;background:linear-gradient(transparent,var(--bg))}
 @media (max-width:1023px){
-  .kinetic.has-cosmos{grid-template-columns:1fr;min-height:auto;padding-top:min(54vh,560px);padding-bottom:12vh}
+  .kinetic.has-cosmos{grid-template-columns:1fr;min-height:auto;padding-top:8vh;padding-bottom:12vh}
+  .kinetic.has-cosmos .kinetic__stage{grid-row:auto}
+  .kinetic.has-cosmos .kinetic__text{margin-top:48px}
   .kinetic.has-cosmos .kinetic__text{grid-column:1}
 }
