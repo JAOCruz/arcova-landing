@@ -13,4 +13,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://arcova-studio.netlify.app/sitemap.xml
+Sitemap: https://arcovaco.com/sitemap.xml

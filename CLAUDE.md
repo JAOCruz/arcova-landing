@@ -5,5 +5,5 @@ Static site (no build): index.html, styles.css, main.js (motion, cursor, cylinde
 - Git: push to `origin main:arcova-studio-v2` (never to remote `main`, which is the partner's React site, without asking).
 - Deploy (user runs it): `netlify deploy --prod --dir . --site 9d4ae3da-a246-4a85-a373-73d586e6adb7`.
 - Contact email is projects@arcovaco.com. Team: Laura Ortiz, Geffri González, Juan Aulio Ortiz.
-- SEO (skill `local-seo-analytics`): title/description in index.html AND i18n.js (`meta.title`/`meta.desc`), JSON-LD ProfessionalService in `<head>`, robots.txt, sitemap.xml, llms.txt, assets/og.jpg (1200×630). **When moving to arcovaco.com**, replace `https://arcova-studio.netlify.app` everywhere (canonical, og:url, JSON-LD, robots, sitemap, llms.txt).
+- SEO (skill `local-seo-analytics`): title/description in index.html AND i18n.js (`meta.title`/`meta.desc`), JSON-LD ProfessionalService in `<head>`, robots.txt, sitemap.xml, llms.txt, assets/og.jpg (1200×630). Official domain is **https://arcovaco.com** (live since 2026-09-29; www/http redirect to it). All SEO URLs use it; arcova-studio.netlify.app is only the Netlify default URL.
 - GA4: set `GA_ID` in `analytics.js` (empty = disabled). Events: whatsapp_click, phone_click, email_click; consent banner built in.
