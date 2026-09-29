@@ -351,7 +351,7 @@ function main() {
         void main(){ float life = 1.1 + aRnd * 0.9; float t = clamp(uT, 0.0, life); vec3 p = uOrigin + aVel * t * (1.0 - 0.35 * t / life) + vec3(0.0, -2.2, 0.0) * t * t * 0.5;
           vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_Position = projectionMatrix * mv;
           float k = 1.0 - t / life; vA = (uT < 0.0 || uT > life) ? 0.0 : k * k;
-          gl_PointSize = (2.0 + aRnd * 3.5) * uPr * 12.0 * (0.4 + 0.6 * k) / max(-mv.z, 0.5); }`,
+          gl_PointSize = (3.0 + aRnd * 5.0) * uPr * 12.0 * (0.4 + 0.6 * k) / max(-mv.z, 0.5); }`,
       fragmentShader: `varying float vA; void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.1, d); gl_FragColor = vec4(mix(vec3(1.0), vec3(0.45,0.9,1.0), 0.5), a * vA); }` });
     const p = new THREE.Points(g, m); p.frustumCulled = false; scene.add(p); return p;
   })();
@@ -604,7 +604,7 @@ function main() {
   } else {
     // Reduced motion / no GSAP: finished arch, static, title stays legible
     S.p = 0.8; S.intro = 1;
-    KF.forEach(k => { k.sx = mobile ? 0 : -2.6; k.sy = mobile ? -0.6 : 0.3; k.pos[2] += mobile ? 2.5 : 3.4; });
+    KF.forEach(k => { k.sx = mobile ? 0 : -3.0; k.sy = mobile ? -0.6 : 0.3; k.pos[2] += mobile ? 2.5 : 3.4; });
     stepSpans[2].classList.add('is-on');
   }
   // warm up shaders before the loader lifts
