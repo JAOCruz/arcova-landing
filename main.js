@@ -222,9 +222,23 @@
   let lastX = 0;
   $('.svc').addEventListener('pointermove', e => { fx(e.clientX + 40); fy(e.clientY); fr(gsap.utils.clamp(-15, 15, (e.clientX - lastX) * 0.6)); lastX = e.clientX; });
   $$('.svc__item').forEach(item => {
-    item.addEventListener('mouseenter', () => { flImg.src = item.dataset.img; gsap.to(fl, { opacity: 1, scale: 1, duration: 0.5, ease: 'expo.out' }); });
+    item.addEventListener('mouseenter', () => { flImg.src = item.dataset.img; gsap.to(fl, { opacity: 1, scale: 1, duration: 0.5, ease: 'expo.out', overwrite: true }); });
   });
-  $('.svc').addEventListener('mouseleave', () => gsap.to(fl, { opacity: 0, scale: 0.6, duration: 0.4, ease: 'expo.out' }));
+  const hideFloat = () => gsap.to(fl, { opacity: 0, scale: 0.6, duration: 0.4, ease: 'expo.out', overwrite: true });
+  $('.svc').addEventListener('mouseleave', hideFloat);
+  // Scrolling without moving the mouse never fires mouseleave: re-check what's under the pointer
+  let px0 = -1, py0 = -1;
+  window.addEventListener('pointermove', e => { px0 = e.clientX; py0 = e.clientY; }, { passive: true });
+  const checkFloat = () => {
+    const el = px0 < 0 ? null : document.elementFromPoint(px0, py0);
+    const item = el && el.closest('.svc__item');
+    if (!item) { if (+gsap.getProperty(fl, 'opacity') > 0) hideFloat(); return; }
+    if (flImg.getAttribute('src') !== item.dataset.img) flImg.src = item.dataset.img;
+    fx(px0 + 40); fy(py0);
+    gsap.to(fl, { opacity: 1, scale: 1, duration: 0.5, ease: 'expo.out', overwrite: true });
+  };
+  window.addEventListener('scroll', checkFloat, { passive: true });
+  ScrollTrigger.create({ trigger: '.svc', start: 'top bottom', end: 'bottom top', onLeave: hideFloat, onLeaveBack: hideFloat });
 
   // Cylinder tilts with pointer
   const cyl = $('.cyl');
