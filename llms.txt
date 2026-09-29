@@ -1,0 +1,24 @@
+# Arcova
+
+> Arcova es un estudio creativo multidisciplinario en Santo Domingo, República Dominicana, que combina estrategia, diseño y tecnología para construir marcas, experiencias y soluciones que generan valor para los negocios. Más de 10 años de experiencia y más de 100 clientes e industrias. El nombre viene de "arco": lo que une la visión del cliente con su realidad.
+
+- Ubicación: Santo Domingo, República Dominicana. Trabajamos con clientes en RD y Estados Unidos.
+- Idiomas: español e inglés.
+- Contacto: projects@arcovaco.com · +1 809-607-0638 · Instagram @arcovaco.rd · https://arcova-studio.netlify.app/
+- Equipo: Laura Ortiz (Founder & Creative Director), Geffri González (Head of Digital Experiences), Juan Aulio Ortiz (Head of UI/UX, Web Design & Backend / Infra), más una red de especialistas (desarrollo, ingeniería, IA, datos, AR, producción, fotografía, video, contenido, paid media).
+
+## Servicios
+- [Brand & Identity](https://arcova-studio.netlify.app/#services): estrategia de marca, naming, identidad visual, sistemas de marca, packaging.
+- [Creative & Strategy](https://arcova-studio.netlify.app/#services): dirección creativa, campañas, concept development, estrategia de comunicación, contenido, editorial.
+- [Digital Experiences](https://arcova-studio.netlify.app/#services): páginas web y e-commerce con animación y 3D, UI/UX, experiencias interactivas, AR, productos digitales.
+- [Physical Experiences](https://arcova-studio.netlify.app/#services): retail, spatial branding, señalética, activaciones, instalaciones inmersivas.
+- [AI & Automation](https://arcova-studio.netlify.app/#services): inteligencia artificial, agentes y chatbots de WhatsApp, automatización, business intelligence, optimización de procesos.
+
+## Cómo trabajamos
+- Think: entendemos el reto y definimos la oportunidad. Create: desarrollamos conceptos, sistemas y experiencias. Build: convertimos las ideas en soluciones reales.
+
+## Clientes
+- [Marcas que confían en Arcova](https://arcova-studio.netlify.app/#clients): Right Construction, Say hi Beauty, Impegna, La Yuca Group, Dentolux, Passos, Asociación Popular de Ahorros y Préstamos, Our Flavour, Gingerly, Grupo Emcaro, Una Vaina Verde, Jaraba, Chez Marie Bakery, TEAbrazo.
+
+## Contacto
+- [Escríbenos](https://arcova-studio.netlify.app/#contact)

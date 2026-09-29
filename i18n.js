@@ -2,8 +2,8 @@
 (() => {
   const D = {
     es: {
-      'meta.title': 'Arcova — Construimos marcas. Creamos experiencias.',
-      'meta.desc': 'Arcova es un estudio creativo multidisciplinario en Santo Domingo que combina estrategia, diseño y tecnología para construir marcas, experiencias y soluciones que generan valor.',
+      'meta.title': 'Arcova | Branding, diseño web e IA en Santo Domingo', 'hero.eyebrow': 'Estudio creativo · Santo Domingo, RD',
+      'meta.desc': 'Estudio creativo en Santo Domingo, RD: branding, páginas web con 3D, experiencias digitales, IA y chatbots de WhatsApp. Cotiza tu proyecto con Arcova.',
       'nav.studio': 'Estudio', 'nav.services': 'Servicios', 'nav.why': 'Por qué', 'nav.clients': 'Clientes', 'nav.contact': 'Contacto', 'nav.cta': 'Hablemos',
       'hero.l1': 'Construimos', 'hero.l2': 'marcas<em>.</em>', 'hero.l3': 'Creamos', 'hero.l4': 'experiencias.',
       'hero.lead': 'Estudio creativo multidisciplinario. Estrategia, diseño y tecnología para construir marcas que se ven, se usan y se recuerdan.',
@@ -37,8 +37,8 @@
       'cursor.write': 'Escríbenos', 'cursor.hi': 'Hola',
     },
     en: {
-      'meta.title': 'Arcova — Building brands. Creating experiences.',
-      'meta.desc': 'Arcova is a multidisciplinary creative studio in Santo Domingo combining strategy, design and technology to build brands, experiences and solutions that create business value.',
+      'meta.title': 'Arcova | Branding, Web Design & AI Studio in Santo Domingo', 'hero.eyebrow': 'Creative studio · Santo Domingo, DR',
+      'meta.desc': 'Creative studio in Santo Domingo, Dominican Republic: branding, 3D websites, digital experiences, AI and WhatsApp chatbots. Get a quote from Arcova.',
       'nav.studio': 'Studio', 'nav.services': 'Services', 'nav.why': 'Why us', 'nav.clients': 'Clients', 'nav.contact': 'Contact', 'nav.cta': 'Let’s talk',
       'hero.l1': 'Building', 'hero.l2': 'brands<em>.</em>', 'hero.l3': 'Creating', 'hero.l4': 'experiences.',
       'hero.lead': 'A multidisciplinary creative studio. Strategy, design and technology to build brands people see, use and remember.',
