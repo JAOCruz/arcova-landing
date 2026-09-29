@@ -230,7 +230,7 @@
   const cyl = $('.cyl');
   $('.kinetic').addEventListener('pointermove', e => {
     const r = e.currentTarget.getBoundingClientRect();
-    gsap.to(cyl, { rotateX: -12 + ((e.clientY - r.top) / r.height - 0.5) * -20, rotateZ: -8 + ((e.clientX - r.left) / r.width - 0.5) * 12, duration: 1.2, ease: 'power3.out' });
+    gsap.to(cyl, { rotateX: -12 + ((e.clientY - r.top) / r.height - 0.5) * -20, rotateZ: ((e.clientX - r.left) / r.width - 0.5) * 8, duration: 1.2, ease: 'power3.out' });
   });
 
   // ---------- Builders ----------

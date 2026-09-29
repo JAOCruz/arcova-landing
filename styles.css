@@ -183,7 +183,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------- Kinetic cylinder ---------- */
 .kinetic{position:relative;min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:4vw;padding:12vh var(--pad);overflow:hidden;background:radial-gradient(ellipse at 30% 50%,rgba(91,33,182,.35),transparent 60%),radial-gradient(ellipse at 80% 70%,rgba(6,182,212,.18),transparent 55%),var(--bg)}
 .kinetic__stage{height:80vh;perspective:1400px;display:grid;place-items:center}
-.cyl{position:relative;width:1px;height:100%;transform-style:preserve-3d;transform:rotateX(-12deg) rotateZ(-8deg)}
+.cyl{position:relative;width:1px;height:100%;transform-style:preserve-3d;transform:rotateX(-12deg)}
 .cyl__ring{position:absolute;left:0;transform-style:preserve-3d;animation:spin var(--dur,24s) linear infinite;animation-delay:var(--delay,0s)}
 .cyl__ring span{position:absolute;left:0;top:0;font-weight:500;font-size:var(--fs,34px);letter-spacing:.02em;line-height:1;white-space:nowrap;backface-visibility:hidden;-webkit-backface-visibility:hidden;color:#fff}
 @keyframes spin{from{transform:rotateY(0)}to{transform:rotateY(-360deg)}}
@@ -289,3 +289,5 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .nav .lang{margin-right:8px}
 .lang--menu{margin:40px 0 0;font-size:14px}
 @media (max-width:820px){.nav .lang{margin-right:0}}
+
+.hero.has-3d{-webkit-user-select:none;user-select:none}
