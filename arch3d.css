@@ -30,8 +30,10 @@
 .hero.has-3d .hero__title{text-shadow:0 2px 40px rgba(7,7,11,.5)}
 
 @media (max-width:820px){
-  .arch3d__steps{bottom:auto;top:calc(100svh - 92px);font-size:10px;gap:10px}
+  .arch3d__steps{bottom:10px;font-size:10px;gap:10px}
+  .arch3d__steps u{display:none}
   .arch3d__labels{font-size:9px}
+  .arch3d__labels span:nth-child(4){display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .arch3d__steps u{display:none}

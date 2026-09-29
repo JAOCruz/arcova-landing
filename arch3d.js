@@ -105,26 +105,27 @@ function main() {
     fragmentShader: `uniform float uTime; uniform vec2 uRes;
       float blob(vec2 uv, vec2 c, float r, float asp){ vec2 d = (uv - c) * vec2(asp, 1.0); return exp(-dot(d, d) / (r * r)); }
       void main(){ vec2 uv = gl_FragCoord.xy / uRes; float asp = uRes.x / uRes.y; float t = uTime * 0.06;
-        vec3 c = vec3(0.027, 0.027, 0.043);
-        c += vec3(0.36, 0.13, 0.71) * 0.55 * blob(uv, vec2(0.18 + 0.10 * sin(t * 1.3), 0.40 + 0.08 * cos(t)), 0.45, asp);
-        c += vec3(0.11, 0.31, 0.85) * 0.50 * blob(uv, vec2(0.86 + 0.10 * cos(t * 0.9), 0.88 + 0.08 * sin(t * 1.1)), 0.45, asp);
-        c += vec3(0.02, 0.71, 0.83) * 0.40 * blob(uv, vec2(0.84 + 0.08 * sin(t * 1.7), 0.10 + 0.06 * cos(t * 1.4)), 0.34, asp);
-        c += vec3(0.66, 0.33, 0.97) * 0.30 * blob(uv, vec2(0.52 + 0.12 * cos(t * 0.7), 0.58 + 0.1 * sin(t * 0.8)), 0.24, asp);
-        c += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.012;
+        vec3 c = vec3(0.020, 0.020, 0.032);
+        c += vec3(0.36, 0.13, 0.71) * 0.22 * blob(uv, vec2(0.16 + 0.10 * sin(t * 1.3), 0.42 + 0.08 * cos(t)), 0.36, asp);
+        c += vec3(0.11, 0.31, 0.85) * 0.20 * blob(uv, vec2(0.84 + 0.10 * cos(t * 0.9), 0.86 + 0.08 * sin(t * 1.1)), 0.36, asp);
+        c += vec3(0.02, 0.71, 0.83) * 0.16 * blob(uv, vec2(0.82 + 0.08 * sin(t * 1.7), 0.12 + 0.06 * cos(t * 1.4)), 0.26, asp);
+        c += vec3(0.66, 0.33, 0.97) * 0.13 * blob(uv, vec2(0.50 + 0.12 * cos(t * 0.7), 0.6 + 0.1 * sin(t * 0.8)), 0.2, asp);
+        c *= 1.0 - 0.55 * smoothstep(0.45, 0.0, uv.y);
+        c += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.01;
         gl_FragColor = vec4(c, 1.0); }`
   }));
   aurora.frustumCulled = false; aurora.renderOrder = -10;
   scene.add(aurora);
 
   /* ---------- Lights ---------- */
-  const key = new THREE.DirectionalLight(0xfff4ea, 1.4); key.position.set(3, 7, 4);
+  const key = new THREE.DirectionalLight(0xfff1e6, 1.1); key.position.set(3, 7, 4);
   key.castShadow = !mobile; key.shadow.mapSize.set(1024, 1024); key.shadow.bias = -0.0006; key.shadow.normalBias = 0.02;
   Object.assign(key.shadow.camera, { left: -3.2, right: 3.2, top: 4.5, bottom: -1, near: 1, far: 20 });
-  scene.add(key, new THREE.AmbientLight(0x6a5bb0, 0.35));
-  const rimL = new THREE.SpotLight(0x8b3dff, 0, 20, 0.7, 0.6, 1); rimL.position.set(-4.5, 3.5, -2.5); rimL.target.position.set(0, 1.5, 0);
-  const rimR = new THREE.SpotLight(0x22d3ee, 0, 20, 0.7, 0.6, 1); rimR.position.set(4.5, 3.2, -2.5); rimR.target.position.set(0, 1.5, 0);
-  const fill = new THREE.PointLight(0x2563eb, 0, 12, 1.6); fill.position.set(0, 1.4, 3.5);
-  const keyLight = new THREE.PointLight(0xdff9ff, 0, 8, 1.5); keyLight.position.set(0, 2.5, 0.6);
+  scene.add(key, new THREE.AmbientLight(0x6a5bb0, 0.25));
+  const rimL = new THREE.SpotLight(0x8b3dff, 0, 24, 0.8, 0.7, 2); rimL.position.set(-4.2, 3.6, -3); rimL.target.position.set(0, 1.5, 0);
+  const rimR = new THREE.SpotLight(0x22d3ee, 0, 24, 0.8, 0.7, 2); rimR.position.set(4.2, 3.2, -3); rimR.target.position.set(0, 1.5, 0);
+  const fill = new THREE.PointLight(0x4f7bff, 0, 14, 2); fill.position.set(0.5, 1.2, 3.8);
+  const keyLight = new THREE.PointLight(0xdff9ff, 0, 7, 2); keyLight.position.set(0, 2.3, 1.3);
   scene.add(rimL, rimL.target, rimR, rimR.target, fill, keyLight);
 
   /* ---------- Arch geometry ---------- */
@@ -137,7 +138,7 @@ function main() {
 
   function makeStoneMaterial() {
     const u = { uBuild: { value: 0 }, uSeed: { value: new THREE.Vector3(seed() * 10, seed() * 10, seed() * 10) } };
-    const m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.22, metalness: 0, clearcoat: 0.5, clearcoatRoughness: 0.15, envMapIntensity: 0.7, iridescence: 0.35, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 420], emissive: 0x000000 });
+    const m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.3, metalness: 0, clearcoat: 0.7, clearcoatRoughness: 0.12, envMapIntensity: 0.9, iridescence: 0.35, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 420], emissive: 0x000000 });
     m.userData.u = u;
     m.customProgramCacheKey = () => 'arcova-marble';
     m.onBeforeCompile = sh => {
@@ -157,10 +158,10 @@ function main() {
           float vein = smoothstep(0.80, 1.0, v1);
           float v2 = 1.0 - abs(sin((P.y * 1.2 - P.z * 0.9 + P.x * 0.3) * 4.2 + m * 9.0));
           float vein2 = smoothstep(0.90, 1.0, v2);
-          vec3 base = mix(vec3(0.80, 0.80, 0.86), vec3(0.58, 0.59, 0.70), m * 0.9);
-          vec3 veinCol = mix(vec3(0.42, 0.34, 0.70), vec3(0.28, 0.42, 0.82), m);
+          vec3 base = mix(vec3(0.42, 0.42, 0.48), vec3(0.22, 0.22, 0.30), m * 1.1);
+          vec3 veinCol = mix(vec3(0.08, 0.06, 0.16), vec3(0.55, 0.58, 0.74), smoothstep(0.35, 0.65, m));
           diffuseColor.rgb = mix(base, veinCol, clamp(vein * 0.75 + vein2 * 0.4, 0.0, 1.0));`)
-        .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = clamp(roughnessFactor + vein * 0.22 + m * 0.08, 0.0, 1.0);')
+        .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = clamp(roughnessFactor - vein * 0.12 + m * 0.1, 0.05, 1.0);')
         .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\ntotalEmissiveRadiance += uGlow * glowEdge * 5.0;');
     };
     stoneMats.push(m);
@@ -208,14 +209,14 @@ function main() {
   for (let i = 0; i < A.N; i++) {
     const isKey = i === A.key;
     const a1 = a0 + aw * (isKey ? keyF : 1);
-    const ri = isKey ? A.Ri - 0.05 : A.Ri, ro = isKey ? A.Ro + 0.15 : A.Ro;
+    const ri = isKey ? A.Ri - 0.015 : A.Ri, ro = isKey ? A.Ro + 0.16 : A.Ro;
     const s = new THREE.Shape();
     s.moveTo(ri * Math.cos(a0 + gap), ri * Math.sin(a0 + gap));
     s.absarc(0, 0, ri, a0 + gap, a1 - gap, false);
     s.lineTo(ro * Math.cos(a1 - gap), ro * Math.sin(a1 - gap));
     s.absarc(0, 0, ro, a1 - gap, a0 + gap, true);
     s.closePath();
-    const m = addStone(s, isKey ? A.depth + 0.1 : A.depth, C, isKey ? 'keystone' : 'voussoir', 0);
+    const m = addStone(s, isKey ? A.depth + 0.03 : A.depth, C, isKey ? 'keystone' : 'voussoir', 0);
     if (isKey) keystone = stones[stones.length - 1];
     else vOrder.push({ st: stones[stones.length - 1], rank: Math.min(i, A.N - 1 - i) * 2 + (i > A.key ? 1 : 0) });
     a0 = a1;
@@ -270,8 +271,10 @@ function main() {
         vec2 gv = abs(fract(vWp.xz * 2.0 - 0.5) - 0.5) / fwidth(vWp.xz * 2.0);
         float gl = 1.0 - min(min(gv.x, gv.y), 1.0);
         float rad = length(vWp.xz);
-        totalEmissiveRadiance += vec3(0.25, 0.75, 0.95) * gl * uGrid * 0.35 * smoothstep(6.0, 1.0, rad);
-        totalEmissiveRadiance += mix(vec3(0.45, 0.20, 0.95), vec3(0.10, 0.55, 0.85), clamp(vWp.x * 0.3 + 0.5, 0.0, 1.0)) * uGlow * 0.16 * smoothstep(3.6, 0.4, rad);`)
+        totalEmissiveRadiance += vec3(0.25, 0.75, 0.95) * gl * uGrid * 0.3 * smoothstep(6.0, 1.0, rad);
+        float ao = min(smoothstep(0.15, 0.95, distance(vWp.xz, vec2(1.18, 0.0))), smoothstep(0.15, 0.95, distance(vWp.xz, vec2(-1.18, 0.0))));
+        diffuseColor.rgb *= 0.35 + 0.65 * ao;
+        totalEmissiveRadiance += mix(vec3(0.45, 0.20, 0.95), vec3(0.10, 0.55, 0.85), clamp(vWp.x * 0.3 + 0.5, 0.0, 1.0)) * uGlow * 0.12 * smoothstep(3.6, 0.4, rad) * (0.35 + 0.65 * ao);`)
       .replace('#include <opaque_fragment>', `#include <opaque_fragment>
         gl_FragColor.a *= smoothstep(9.0, 2.0, length(vWp.xz)) * max(uGrid, uGlow);`);
   };
@@ -289,9 +292,9 @@ function main() {
       g.translate(0, 0, -h / 2); g.computeVertexNormals(); return g;
     };
     const glassMat = new THREE.MeshPhysicalMaterial({
-      color: 0xf8f9ff, roughness: 0.2, metalness: 0, transmission: 1, thickness: 0.5, ior: 1.5, dispersion: mobile ? 0 : 0.55,
+      color: 0x9a9db0, roughness: 0.2, metalness: 0, transmission: 1, thickness: 0.5, ior: 1.5, dispersion: mobile ? 0 : 0.55,
       iridescence: 0.55, iridescenceIOR: 1.35, iridescenceThicknessRange: [140, 520], clearcoat: 1, clearcoatRoughness: 0.05,
-      envMapIntensity: 2.4, specularIntensity: 1, transparent: true, opacity: 1, side: THREE.DoubleSide, attenuationColor: new THREE.Color(0xd9dcff), attenuationDistance: 1.6
+      envMapIntensity: 1.9, specularIntensity: 1, transparent: true, opacity: 1, side: THREE.DoubleSide, attenuationColor: new THREE.Color(0xd9dcff), attenuationDistance: 1.6
     });
     glassMat.onBeforeCompile = sh => {
       sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vObjPos; varying vec3 vObjN;').replace('#include <begin_vertex>', '#include <begin_vertex>\nvObjPos = position; vObjN = normal;');
@@ -299,24 +302,24 @@ function main() {
         .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
           float frost = 1.0 - smoothstep(0.35, 0.75, abs(vObjN.z));
           float grain = ah3(floor(vObjPos * 150.0));
-          roughnessFactor = mix(0.05, 0.36 + 0.34 * grain, frost);`)
+          roughnessFactor = mix(0.04, 0.4 + 0.35 * grain, frost);`)
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-          totalEmissiveRadiance += vec3(0.9, 0.95, 1.0) * step(0.985, grain) * frost * 0.5;`)
-        .replace('material.transmission = transmission;', 'material.transmission = transmission * (1.0 - frost * 0.72);');
+          totalEmissiveRadiance += vec3(0.9, 0.95, 1.0) * step(0.982, grain) * frost * 0.9;`)
+        .replace('material.transmission = transmission;', 'material.transmission = transmission * (1.0 - frost * 0.45);');
     };
     const specs = [[1.05, 1.0], [1.65, 1.0], [2.25, 1.0], [1.75, 1.0], [1.1, 1.0]];
     specs.forEach(([L, W], i) => {
       const t = i / (specs.length - 1);
       const mesh = new THREE.Mesh(ringGeo(L, W, 0.11, 0.55), glassMat);
       const piv = new THREE.Group(); piv.add(mesh); rings.add(piv);
-      piv.position.set(0, 0, (t - 0.5) * 4.4);
+      piv.position.set(0, 0, (t - 0.5) * 6.0);
       mesh.rotation.set(0, 0, -0.35);
       ringItems.push({ piv, mesh, base: piv.position.clone(), ph: seed() * 6.28, dir: new THREE.Vector3(0, 0, (t - 0.5) * 2).normalize() });
     });
-    rings.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(0.62, -0.5, 0.6).normalize());
+    rings.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(0.74, -0.56, 0.36).normalize());
     rings.userData.q0 = rings.quaternion.clone();
-    rings.position.set(mobile ? 0 : 0.9, mobile ? 2.4 : 1.9, mobile ? 1.6 : 2.3);
-    rings.scale.setScalar(mobile ? 0.5 : 0.8);
+    rings.position.set(mobile ? 0.55 : 1.05, mobile ? 2.85 : 1.72, mobile ? 1.6 : 2.4);
+    rings.scale.setScalar(mobile ? 0.5 : 0.72);
     scene.add(rings);
   }
 
@@ -343,7 +346,7 @@ function main() {
       vel.set([Math.cos(th) * Math.cos(ph) * sp, Math.sin(ph) * sp * 0.6 - 0.4, Math.sin(th) * Math.cos(ph) * sp], i * 3); rnd[i] = seed();
     }
     const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('aVel', new THREE.BufferAttribute(vel, 3)); g.setAttribute('aRnd', new THREE.BufferAttribute(rnd, 1));
-    const m = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { uT: { value: -1 }, uOrigin: { value: new THREE.Vector3(0, A.pierH + A.Ri - 0.05, 0) }, uPr: { value: renderer.getPixelRatio() } },
+    const m = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, uniforms: { uT: { value: -1 }, uOrigin: { value: new THREE.Vector3(0, A.pierH + A.Ri, 0) }, uPr: { value: renderer.getPixelRatio() } },
       vertexShader: `attribute vec3 aVel; attribute float aRnd; uniform float uT; uniform vec3 uOrigin; uniform float uPr; varying float vA;
         void main(){ float life = 1.1 + aRnd * 0.9; float t = clamp(uT, 0.0, life); vec3 p = uOrigin + aVel * t * (1.0 - 0.35 * t / life) + vec3(0.0, -2.2, 0.0) * t * t * 0.5;
           vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_Position = projectionMatrix * mv;
@@ -409,11 +412,11 @@ function main() {
     const ringsVis = 1 - ringsK;
     rings.visible = ringsVis > 0.001 && intro > 0.001;
     if (rings.visible) {
-      drag.vx *= 0.94; drag.vy *= 0.94; drag.ry += drag.vx; drag.rx += drag.vy; drag.rx = THREE.MathUtils.clamp(drag.rx, -1, 1);
+      drag.vx *= 0.92; drag.vy *= 0.92; drag.ry += drag.vx; drag.rx += drag.vy; drag.rx = THREE.MathUtils.clamp(drag.rx, -1, 1);
       tmpQ.setFromEuler(new THREE.Euler(Math.sin(t * 0.14) * 0.06 - ptr.y * 0.22 + drag.rx, Math.sin(t * 0.18) * 0.1 + ptr.x * 0.3 + drag.ry, (1 - easeOut(intro)) * -0.5 + ringsK * 0.6));
       rings.quaternion.copy(tmpQ).multiply(rings.userData.q0);
       const sIn = 0.7 + 0.3 * easeOut(intro);
-      rings.scale.setScalar((mobile ? 0.5 : 0.8) * sIn * (1 - 0.2 * ringsK));
+      rings.scale.setScalar((mobile ? 0.5 : 0.72) * sIn * (1 - 0.2 * ringsK));
       ringItems.forEach((r, i) => {
         const fly = easeIn(ringsK) * 7;
         r.piv.position.copy(r.base).addScaledVector(r.dir, fly);
@@ -470,12 +473,12 @@ function main() {
     if (p < KEY1 - 0.01) S.impactAt = -1;
     const since = S.impactAt >= 0 ? t - S.impactAt : -1;
     burst.material.uniforms.uT.value = since;
-    keyLight.intensity = since >= 0 ? 40 * Math.exp(-since * 4) : 0;
+    keyLight.intensity = since >= 0 ? 3.5 * Math.exp(-since * 7) : 0;
     // lights ramp
     const pre = rng(0.3, 0.7, p) * 0.35;
-    rimL.intensity = (pre + real) * 30; rimR.intensity = (pre + real) * 30; fill.intensity = real * 4 + pre * 2;
-    key.intensity = 0.7 + 0.9 * (pre / 0.35 * 0.5 + real * 0.5);
-    stoneMats.forEach(m => (m.envMapIntensity = 0.5 + real * 0.5));
+    rimL.intensity = (pre + real) * 160; rimR.intensity = (pre + real) * 160; fill.intensity = real * 18 + pre * 8;
+    key.intensity = 0.7 + 0.6 * (pre / 0.35 * 0.5 + real * 0.5);
+    stoneMats.forEach(m => (m.envMapIntensity = 0.6 + real * 0.5));
     // dust
     dust.material.uniforms.uOpacity.value = 0.55 * intro * (0.5 + 0.5 * bp) * (1 - rng(0.9, 1, p));
     dust.material.uniforms.uTime.value = t;
@@ -499,7 +502,7 @@ function main() {
     // aurora
     auroraU.uTime.value = t;
     // bloom breathing with reality
-    if (bloom) bloom.strength = 0.35 + real * 0.2 + (since >= 0 ? Math.exp(-since * 3) * 0.7 : 0);
+    if (bloom) bloom.strength = 0.35 + real * 0.2 + (since >= 0 ? Math.exp(-since * 4) * 0.3 : 0);
     // DOM: labels + steps
     updateDom(p, guideA);
   }
@@ -507,7 +510,7 @@ function main() {
   function triggerImpact(t) {
     S.impactAt = t;
     if (window.gsap) {
-      gsap.fromTo(flashEl, { opacity: 0.7 }, { opacity: 0, duration: 0.7, ease: 'power2.out' });
+      gsap.fromTo(flashEl, { opacity: 0.32 }, { opacity: 0, duration: 0.55, ease: 'power2.out' });
     }
   }
 
@@ -539,11 +542,18 @@ function main() {
   resize();
   addEventListener('resize', resize);
 
-  let raf = 0, running = false;
+  let raf = 0, running = false, slow = 0, frames = 0, degraded = false;
+  const degrade = () => {
+    degraded = true;
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.25));
+    if (bloom) { composer.removePass(bloom); bloom.dispose(); bloom = null; }
+    resize();
+  };
   const frame = () => {
     raf = 0;
     if (!S.view || document.hidden) { running = false; return; }
     const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+    if (!degraded && ++frames > 90) { if (dt > 0.024) slow++; else slow = Math.max(0, slow - 1); if (slow > 20) degrade(); }
     ptr.x += (ptr.tx - ptr.x) * 0.06; ptr.y += (ptr.ty - ptr.y) * 0.06;
     update(dt, t);
     composer ? composer.render() : renderer.render(scene, camera);
@@ -556,7 +566,7 @@ function main() {
 
   /* ---------- Pointer ---------- */
   if (fine) {
-    hero.addEventListener('pointermove', e => { ptr.tx = e.clientX / innerWidth - 0.5; ptr.ty = e.clientY / innerHeight - 0.5; if (drag.on) { const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY; drag.vx = dx * 0.004; drag.vy = dy * 0.003; drag.moved += Math.abs(dx) + Math.abs(dy); } });
+    hero.addEventListener('pointermove', e => { ptr.tx = e.clientX / innerWidth - 0.5; ptr.ty = e.clientY / innerHeight - 0.5; if (drag.on) { const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.x = e.clientX; drag.y = e.clientY; drag.vx = dx * 0.0022; drag.vy = dy * 0.0016; drag.moved += Math.abs(dx) + Math.abs(dy); } });
     hero.addEventListener('pointerdown', e => { if (e.button !== 0 || e.target.closest('a,button') || !rings.visible) return; drag.on = true; drag.x = e.clientX; drag.y = e.clientY; drag.moved = 0; hero.classList.add('is-dragging'); });
     const up = () => { if (drag.on) { drag.on = false; hero.classList.remove('is-dragging'); } };
     addEventListener('pointerup', up); addEventListener('pointercancel', up);
@@ -594,7 +604,7 @@ function main() {
   } else {
     // Reduced motion / no GSAP: finished arch, static, title stays legible
     S.p = 0.8; S.intro = 1;
-    KF.forEach(k => { k.sx = mobile ? 0 : -1.3; k.sy = mobile ? -0.5 : 0; });
+    KF.forEach(k => { k.sx = mobile ? 0 : -2.6; k.sy = mobile ? -0.6 : 0.3; k.pos[2] += mobile ? 2.5 : 3.4; });
     stepSpans[2].classList.add('is-on');
   }
   // warm up shaders before the loader lifts
